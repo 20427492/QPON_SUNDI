@@ -29,14 +29,11 @@ module.exports = {
     password: {
       type: 'string',
       required: true,
-      example: '2$28a8eabna301089103-13948134nad',
     },
 
     role: {
       type: 'string',
-      required: true,
       isIn: ['admin', 'member', 'vistor'],
-      defaultsTo: 'vistor',
     },
 
     'curr_coins': {
