@@ -25,6 +25,7 @@ module.exports.routes = {
   '/update': {view: 'pages/update'},
   '/admin': {view: 'pages/admin'},
   '/search': {view: 'pages/search'},
+  '/register': {view: 'pages/register'},
 
 
   /***************************************************************************
