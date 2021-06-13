@@ -5,7 +5,7 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
-const Restaurant = require("../models/Restaurant");
+//const Restaurant = require("../models/Restaurant");
 
 module.exports = {
     // list

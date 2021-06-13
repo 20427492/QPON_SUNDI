@@ -21,29 +21,52 @@
     }
 </style>
 
-<div class="card login-card">
-    <div class="card-content">
-        <!-- username -->
-        <div class="field login-form-item">
-            <label class="label">Username</label>
-            <div class="control">
-                <input class="input" type="text">
+<form action="/user/login" method="POST" onsubmit="submitForm(this);return false">
+    <div class="card login-card">
+        <div class="card-content">
+            <!-- username -->
+            <div class="field login-form-item">
+                <label class="label">Username</label>
+                <div class="control">
+                    <input class="input" name="username" type="text">
+                </div>
             </div>
-        </div>
-
-        <!-- password -->
-        <div class="field login-form-item">
-            <label class="label">Password</label>
-            <div class="control">
-                <input class="input" type="text">
+    
+            <!-- password -->
+            <div class="field login-form-item">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" name="password" type="text">
+                </div>
             </div>
-        </div>
-
-        <!-- login button -->
-        <div class="field login-form-item">
-            <div class="control" style="display: flex;justify-content: flex-end">
-                <button class="button is-link">Login</button>
+    
+            <!-- login button -->
+            <div class="field login-form-item">
+                <div class="control" style="display: flex;justify-content: flex-end">
+                    <button class="button is-success">Login</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
+
+
+<script>
+    async function submitForm(formElem) {
+  
+        var response = await fetch(formElem.action, {
+            method: formElem.method,
+            body: new FormData(formElem),
+        });
+  
+        if (response.ok) {
+            var user = await response.json();
+            location.assign("/");
+        } else if (response.status == 401) {
+            var msg = await response.json();
+            alert(msg);
+        } else {
+            alert(response.statusText);
+        }
+    };
+  </script>
