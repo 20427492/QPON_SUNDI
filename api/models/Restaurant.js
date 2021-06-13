@@ -12,12 +12,13 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
+/*
     restaurantId: {
       type: 'string',
       required: true,
       unique: true,
     },
+    */
 
     title: {
       type: 'string',

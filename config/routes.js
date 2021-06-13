@@ -25,8 +25,8 @@ module.exports.routes = {
   '/update': {view: 'pages/update'},
   '/admin': {view: 'pages/admin'},
   '/search': {view: 'pages/search'},
-  '/register': {view: 'pages/register'},
   '/login': {view: 'pages/login'},
+  '/signup': {view: 'pages/signup'},
 
 
   /***************************************************************************
@@ -40,5 +40,6 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+ 'POST /user/signup': 'UserController.signup',
 
 };

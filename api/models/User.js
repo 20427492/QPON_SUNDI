@@ -12,13 +12,14 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
+/*
     userId: {
       type: 'string',
       required: true,
       unique: true,
       example: '123413412412',
     },
+    */
 
     username: {
       type: 'string',

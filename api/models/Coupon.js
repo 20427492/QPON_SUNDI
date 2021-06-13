@@ -12,7 +12,6 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
     userId: {
       type: 'string',
       required: true,
@@ -22,12 +21,13 @@ module.exports = {
       type: 'string',
       required: true,
     },
-
+/*
     couponId: {
       type: 'string',
       required: true,
       unique: true,
     },
+    */
 
     couponAt: {
       type: 'string',

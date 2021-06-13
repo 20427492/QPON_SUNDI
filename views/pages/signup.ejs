@@ -1,11 +1,13 @@
 <style>
     /* pc */
     @media screen and (min-width: 769px) {
+
         /* card */
         .signup-card {
             width: 50%;
             margin: 20px auto;
         }
+
         /* form item */
         .signup-form-item {
             margin: 20px 0;
@@ -20,34 +22,58 @@
     }
 </style>
 
-<div class="card signup-card">
-    <div class="card-content">
-        <!-- username -->
-        <div class="field signup-form-item">
-            <label class="label">Username</label>
-            <div class="control">
-                <input class="input" type="text">
+
+<form action="/user/signup" method="POST" onsubmit="submitForm(this);return false">
+    <div class="card signup-card">
+        <div class="card-content">
+            <!-- username -->
+            <div class="field signup-form-item">
+                <label class="label">Username</label>
+                <div class="control">
+                    <input class="input" type="text" name="username">
+                </div>
             </div>
-        </div>
-        <!-- password -->
-        <div class="field signup-form-item">
-            <label class="label">Password</label>
-            <div class="control">
-                <input class="input" type="text">
+            <!-- password -->
+            <div class="field signup-form-item">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" type="text" name="password">
+                </div>
             </div>
-        </div>
-        <!-- coins -->
-        <div class="field signup-form-item">
-            <label class="label">Coins</label>
-            <div class="control">
-                <input class="input" type="text" disabled value="10000">
+            <!-- coins -->
+            <div class="field signup-form-item">
+                <label class="label">Coins</label>
+                <div class="control">
+                    <input class="input" name="coins" type="text" disabled value="10000">
+                </div>
             </div>
-        </div>
-        <!-- signup button -->
-        <div class="field signup-form-item">
-            <div class="control" style="display: flex;justify-content: flex-end">
-                <button class="button is-link">Signup</button>
+            <!-- signup button -->
+            <div class="field signup-form-item">
+                <div class="control" style="display: flex;justify-content: flex-end">
+                    <button class="button is-success">Signup</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
+
+<script>
+    async function submitForm(formElem) {
+  
+        var response = await fetch(formElem.action, {
+            method: formElem.method,
+            body: new FormData(formElem),
+        });
+  
+        if (response.ok) {
+            var info = await response.json();
+            alert(info)
+            location.assign("/");
+        } else if (response.status == 401) {
+            var msg = await response.json();
+            alert(msg);
+        } else {
+            alert(response.statusText);
+        }
+    };
+  </script>
