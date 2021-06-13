@@ -1,0 +1,106 @@
+<style>
+    .search-form-item{
+        margin-top: 20px;
+    }
+</style>
+
+<section>
+    <div class="columns">
+        <!-- left side -->
+        <div class="column is-three-quarters">
+            <!-- result cards -->
+            <div class="columns">
+                <% [1, 2].forEach(item => { %>
+                    <div class="column">
+                        <% include ../layouts/card %>
+                    </div>
+                <% }) %>
+            </div>
+            
+            <!-- pagination -->
+            <nav class="pagination" role="navigation" aria-label="pagination">
+                <a class="pagination-previous">Previous</a>
+                <a class="pagination-next">Next Page</a>
+                <ul class="pagination-list">
+                    <li>
+                        <a class="pagination-link" aria-label="Go to page1">1</a>
+                    </li>
+                    <li>
+                        <span class="pagination-ellipsis">&hellip;</span>
+                    </li>
+                    <li>
+                        <a class="pagination-link" aria-label="Go to page45">45</a>
+                    </li>
+                    <li>
+                        <a class="pagination-link is-current" aria-label="Go to page46">46</a>
+                    </li>
+                    <li>
+                        <a class="pagination-link" aria-label="Go to page47">47</a>
+                    </li>
+                    <li>
+                        <span class="pagination-ellipsis">&hellip;</span>
+                    </li>
+                    <li>
+                        <a class="pagination-link" aria-label="Go to page48">48</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+        
+
+        <!-- right side -->
+        <div class="column" style="margin-left: 12px;">
+            <!-- Region and Mall -->
+            <!-- Region -->
+            <div class="field search-form-item">
+                <label class="label">Region</label>
+                <div class="control">
+                    <div class="selecte">
+                        <select>
+                            <option>HK Island</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- Mall -->
+            <div class="field search-form-item">
+                <label class="label">Mall</label>
+                <div class="control">
+                    <div class="selecte">
+                        <select>
+                            <option>Elements</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- Min Coin -->
+            <div class="field search-form-item">
+                <label class="label">Min Coin</label>
+                <div class="control">
+                    <input class="input" type="text">
+                </div>
+            </div>
+            <!-- Max Coin -->
+            <div class="field search-form-item">
+                <label class="label">Max Coin</label>
+                <div class="control">
+                    <input class="input" type="text">
+                </div>
+            </div>
+            <!-- Deal Vaild Till -->
+            <div class="field search-form-item">
+                <label class="label">Deal Vaild Till</label>
+                <div class="control">
+                    <input class="input" type="text">
+                </div>
+            </div>
+            <!-- Search -->
+            <div class="field search-form-item">
+                <div class="control">
+                    <button class="button is-link">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
