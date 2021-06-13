@@ -1,0 +1,49 @@
+<style>
+    /* pc */
+    @media screen and (min-width: 769px) {
+        /* card */
+        .login-card {
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        /* form item */
+        .login-form-item {
+            margin: 20px 0;
+        }
+    }
+    /* mobile */
+    @media screen and (max-width: 768px) {
+        /* card */
+        .login-card {
+            margin: 10px;
+        }     
+    }
+</style>
+
+<div class="card login-card">
+    <div class="card-content">
+        <!-- username -->
+        <div class="field login-form-item">
+            <label class="label">Username</label>
+            <div class="control">
+                <input class="input" type="text">
+            </div>
+        </div>
+
+        <!-- password -->
+        <div class="field login-form-item">
+            <label class="label">Password</label>
+            <div class="control">
+                <input class="input" type="text">
+            </div>
+        </div>
+
+        <!-- login button -->
+        <div class="field login-form-item">
+            <div class="control" style="display: flex;justify-content: flex-end">
+                <button class="button is-link">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
