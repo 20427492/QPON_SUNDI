@@ -19,7 +19,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+  // '/': { view: 'pages/homepage' },
   '/detail': {view: 'pages/detail'},
   '/create': {view: 'pages/create'},
   '/update': {view: 'pages/update'},
@@ -40,6 +40,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+ 'GET /': 'Restaurant.list',
+ 'GET /homepage': 'Restaurant.list',
  'POST /user/signup': 'UserController.signup',
  'POST /user/login': 'UserController.login',
 

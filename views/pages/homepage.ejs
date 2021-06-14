@@ -1,23 +1,46 @@
-<section class="columns">
-  <% [1, 2, 3].forEach(item => { %>
-
+<section class="columns" style="display: flex;flex-wrap: wrap;">
+  <% Object.keys(restaurants).forEach(region=> { %>
     <!-- each cloumn -->
-    <div class="column">
+    <div class="column is-one-third">
 
-      <!-- title of each column -->
+      <!-- title of each column by region -->
       <div class="card-title">
-        <h4 class="title is-4">HK Island</h4>
+        <h4 class="title is-4">
+          <%= region %>
+        </h4>
       </div>
 
-      <!-- cards of each column -->
-      <% [1, 2].forEach(subitem =>{ %>
+      <% restaurants[region].forEach(subItem=> { %>
+        <!-- cards of each column -->
         <a href="/detail">
-          <% include ../layouts/card %>
+          <div class="card" style="margin: 20px 0;">
+            <!-- image -->
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="<%= subItem.image %>" alt="Placeholder image">
+              </figure>
+            </div>
+            <!-- title, restaurant and coins -->
+            <div class="card-content">
+              <!-- title, restaurant -->
+              <div>
+                <!-- title -->
+                <p class="title is-4">
+                  <%= subItem.title %>
+                </p>
+                <!-- restaurant -->
+                <p class="subtitle is-6">
+                  <%= subItem.restaurant %>
+                </p>
+              </div>
+              <!-- coins -->
+              <div class="content" style="margin-top: 20px 0;">
+                Coins: <%= subItem.coins %>
+              </div>
+            </div>
+          </div>
         </a>
-      <% }); %>
-
+      <%}) %>
     </div>
-    
-
   <% }); %>
 </section>

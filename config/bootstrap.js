@@ -35,13 +35,13 @@ module.exports.bootstrap = async function() {
   }
 
   await Restaurant.createEach([
-    { title: "Fresh ingredients!", restaurant: "Above & Beyond", region: "Kowloon", mall: "Harbour City", image: "https://img95.699pic.com/photo/50059/7058.jpg", quota: 16, coins: 300, deal_valid_till: "2021-07-24", detail: "17 Science Museum Rd, Tsim Sha Tsui" },
+    { title: "Fresh ingredients!", restaurant: "Above & Beyond", region: "Kowloon", mall: "Harbour City", image: "https://www1.pchouse.com.cn/penguin-m1.jpg", quota: 16, coins: 300, deal_valid_till: "2021-07-24", detail: "17 Science Museum Rd, Tsim Sha Tsui" },
 
     { title: "Traditional Japanese cuisine.", restaurant: "Sagano", region: "Kowloon", mall: "Time Square", image: "https://img.zcool.cn/community/01bf56554940660000019ae9a70c30.jpg@1280w_1l_2o_100sh.jpg", quota: 10, coins: 200, deal_valid_till: "2021-08-06", detail: "1/F New World Millennium Hong Kong Hotel, 72 Mody Road, Tsim Sha Tsui" },
 
     { title: "Delicious afternoon tea!", restaurant: "Amber's Table", region: "Kowloon", mall: "Elements", image: "https://gavindesign.com/wp-content/uploads/2020/10/20201011_003006_064.jpg", quota: 22, coins: 150, deal_valid_till: "2021-09-05", detail: "Whampoa Garden Site 4 Palm Mansions Block 1" },
 
-    { title: "Two people to eat, 20% discount.", restaurant: "Sabatini Ristorante Italiano", region: "Kowloon", mall: "Festival Walk", image: "https://pic1.shejiben.com/case/2019/03/16/20190316142421-8f0510e8.jpeg", quota: 7, coins: 140, deal_valid_till: "2021-10-29", detail: "69 Mody Rd, Tsim Sha Tsui East" },
+    { title: "Two people to eat, 20% discount.", restaurant: "Sabatini Ristorante Italiano", region: "Kowloon", mall: "Festival Walk", image: "https://gavindesign.com/wp-content/uploads/2020/11/20201109_231239_067.jpg", quota: 7, coins: 140, deal_valid_till: "2021-10-29", detail: "69 Mody Rd, Tsim Sha Tsui East" },
 
     { title: "Delicious buffet buffet", restaurant: "Promenade", region: "Kowloon", mall: " MegaBox ", image: "https://img.zcool.cn/community/013dec5b99e56fa801213dead833c4.jpg@1280w_1l_2o_100sh.jpg", quota: 3, coins: 100, deal_valid_till: "2021-11-21", detail: "  Wing On Plaza, UG 1-5 & 31, 62 Mody Rd, Tsim Sha Tsui" },
 
@@ -53,7 +53,7 @@ module.exports.bootstrap = async function() {
 
     { title: "A variety of delicious wines,", restaurant: "Meraviglia Bar", region: "New Territories", mall: "New Town Plaza", image: "https://5b0988e595225.cdn.sohucs.com/images/20171005/9bee1aaba1064c729ff84a030d0214dc.jpeg", quota: 25, coins: 60, deal_valid_till: "2021-10-22", detail: "Lakeside 2, 10 Science and Technology W Ave, Sha Tin" },
 
-    { title: "Delicious roast duck", restaurant: "Sha Tin 18", region: "New Territories", mall: "Tsuen Wan Plaza", image: "https://pic1.shejiben.com/case/2016/12/27/20161227171139-49c9e8be.jpg", quota: 11, coins: 100, deal_valid_till: "2021-10-21", detail: "4/F, 18 Chak Cheung St, Ma Liu Shui" },
+    { title: "Delicious roast duck", restaurant: "Sha Tin 18", region: "New Territories", mall: "Tsuen Wan Plaza", image: "https://www.xiuxianshipin.com/storage/uploads/image/2019/07/16/153d38f086dd107b82a15140d7daaba9.jpg", quota: 11, coins: 100, deal_valid_till: "2021-10-21", detail: "4/F, 18 Chak Cheung St, Ma Liu Shui" },
 
 
 
@@ -85,7 +85,7 @@ module.exports.bootstrap = async function() {
 
     { title: "Delicious afternoon tea!", restaurant: "ISOLA bar grill", region: "Kowloon", mall: "Elements", image: "https://www.ahstatic.com/photos/5394_rsr001_00_p_1024x768.jpg", quota: 22, coins: 150, deal_valid_till: "2021-09-05", detail: "Whampoa Garden Site 4 Palm Mansions Block 1" },
 
-    { title: "Two people to eat, 20% discount.", restaurant: "Smashed by Electric Ave", region: "New Territories", mall: "Festival Walk", image: "https://static.dw.com/image/47985853_303.jpg", quota: 7, coins: 140, deal_valid_till: "2021-10-29", detail: "69 Mody Rd, Tsim Sha Tsui East" },
+    { title: "Two people to eat, 20% discount.", restaurant: "Smashed by Electric Ave", region: "New Territories", mall: "Festival Walk", image: "https://www.zzyqzs.com/uploads/allimg/191115/1-191115161921C2.jpg", quota: 7, coins: 140, deal_valid_till: "2021-10-29", detail: "69 Mody Rd, Tsim Sha Tsui East" },
 
     { title: "Delicious buffet buffet", restaurant: "Summer Palace", region: "New Territories", mall: " MegaBox ", image: "https://media.timeout.com/images/105757491/image.jpg", quota: 3, coins: 100, deal_valid_till: "2021-11-21", detail: "  Wing On Plaza, UG 1-5 & 31, 62 Mody Rd, Tsim Sha Tsui" },
 
