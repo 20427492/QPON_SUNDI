@@ -43,7 +43,8 @@ module.exports.routes = {
   'GET /': 'Restaurant.list',
   'GET /homepage': 'Restaurant.list',
 
-  'GET /detail': 'Restaurant.detail',
+  'GET /restaurant/detail': 'Restaurant.detail',
+  'POST /restaurant/create': 'Restaurant.create',
 
   'POST /user/signup': 'UserController.signup',
   'POST /user/login': 'UserController.login',

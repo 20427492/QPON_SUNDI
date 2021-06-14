@@ -44,6 +44,13 @@ module.exports = {
 
     // create
 
+    create: async function (req, res) {
+
+        var restaurant = await Restaurant.create(req.body).fetch();
+        return res.redirect('/');
+
+    },
+
     // update
 
     // delete
