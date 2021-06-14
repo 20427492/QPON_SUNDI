@@ -90,6 +90,13 @@ module.exports = {
     },
 
     // delete
+    delete: async function (req, res) {
+        
+        var deleteRestaurant = await Restaurant.destroyOne(req.params.id);
+        if(!deleteRestaurant) return res.status(401).json("Deleted failed");
+
+    },
+
 
     //search
 

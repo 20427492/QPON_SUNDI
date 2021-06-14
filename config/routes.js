@@ -48,6 +48,7 @@ module.exports.routes = {
   'GET /admin': 'Restaurant.admin',
   'POST /restaurant/update/:id': 'Restaurant.update',
   'GET /update': 'Restaurant.updateRead',
+  'DELETE /restaurant/delete/:id': 'Restaurant.delete',
 
   'POST /user/signup': 'UserController.signup',
   'POST /user/login': 'UserController.login',

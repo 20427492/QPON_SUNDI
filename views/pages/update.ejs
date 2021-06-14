@@ -64,12 +64,6 @@
                         <input class="input" type="text" name="image" value="<%= restaurant.image %>" required>
                     </div>
                 </div>
-                <!-- Delete -->
-                <div class="field">
-                    <div class="control">
-                        <button class="button is-danger">Delete</button>
-                    </div>
-                </div>
             </div>
             <!-- right side -->
             <div class="column">
@@ -120,9 +114,35 @@
 
     </section>
 </form>
+<!-- Delete -->
+<button class="button is-danger" onclick="deleteRestaurant('<%= restaurant.id %>')">Delete</button>
+
+
 
 <script>
     //2个选择器是被选择的状态
     document.getElementById("<%= restaurant.region %>").selected = true;
     document.getElementById("<%= restaurant.mall %>").selected = true;
+</script>
+
+<script>
+    async function deleteRestaurant(id) {
+        var mes = confirm ("confirm to delete?");
+
+        if (mes) {
+            var response = await fetch ("/restaurant/delete/"+id, {method: "DELETE"});
+
+            if (response.ok) {
+                alert("Restaurant Deleted.");
+                //location.pathname = '/admin';
+                //return res.redirect('/');
+
+                location.assign = '/admin';
+            }else{
+                alert(response.status + ":" +response.statusText);
+            }
+        }else{
+            alert("cancelled");
+        }
+    };
 </script>
