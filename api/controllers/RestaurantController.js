@@ -47,11 +47,47 @@ module.exports = {
     create: async function (req, res) {
 
         var restaurant = await Restaurant.create(req.body).fetch();
-        return res.redirect('/');
+        if (!restaurant) return res.status(401).json("Created failed");
+
+        res.view('pages/detail', {
+            restaurant: restaurant
+        });
 
     },
 
+    //admin
+    admin: async function (req, res) {
+        const restaurants = await Restaurant.find();
+        return res.view('pages/admin', {
+            restaurants
+        });
+    },
+
+    //updateRead
+    updateRead: async function (req, res) {
+        const id = req.param('id');
+        const restaurant = await Restaurant.findOne({ id });
+        res.view('pages/update', {
+            restaurant
+        });
+    },
+
     // update
+    update: async function (req, res) {
+        
+        var updateRestaurant = await Restaurant.updateOne(req.params.id).set(req.body);
+        if(!updateRestaurant) return res.status(401).json("Updated failed");
+
+        /*一种可行的返回特定id的detail页面方法
+        path = "/detail?id="+req.params.id;
+        return res.redirect(path);*/
+
+        res.view('pages/detail', {
+            restaurant: updateRestaurant
+        });
+
+
+    },
 
     // delete
 

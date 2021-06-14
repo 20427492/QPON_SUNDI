@@ -22,8 +22,8 @@ module.exports.routes = {
   // '/': { view: 'pages/homepage' },
   //'/detail': {view: 'pages/detail'},
   '/create': {view: 'pages/create'},
-  '/update': {view: 'pages/update'},
-  '/admin': {view: 'pages/admin'},
+  //'/update': {view: 'pages/update'},
+  //'/admin': {view: 'pages/admin'},
   '/search': {view: 'pages/search'},
   '/login': {view: 'pages/login'},
   '/signup': {view: 'pages/signup'},
@@ -43,8 +43,11 @@ module.exports.routes = {
   'GET /': 'Restaurant.list',
   'GET /homepage': 'Restaurant.list',
 
-  'GET /restaurant/detail': 'Restaurant.detail',
+  'GET /detail': 'Restaurant.detail',
   'POST /restaurant/create': 'Restaurant.create',
+  'GET /admin': 'Restaurant.admin',
+  'POST /restaurant/update/:id': 'Restaurant.update',
+  'GET /update': 'Restaurant.updateRead',
 
   'POST /user/signup': 'UserController.signup',
   'POST /user/login': 'UserController.login',

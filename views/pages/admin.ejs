@@ -8,29 +8,14 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>120</td>
-            <td>50% discount on Supreme Seafood Feast (for 2 persons)</td>
-            <td>Mongo Tree</td>
-            <td><a href="/update">Update</a></td>
-        </tr>
-        <tr>
-            <td>121</td>
-            <td>Simply receive a complimentary drink</td>
-            <td>Greyhound Cafe</td>
-            <td><a href="/update">Update</a></td>
-        </tr>
-        <tr>
-            <td>122</td>
-            <td>50% Off Yoogane's Chicken Galbi</td>
-            <td>Yoogane</td>
-            <td><a href="/update">Update</a></td>
-        </tr>
-        <tr>
-            <td>123</td>
-            <td>15% Off on Whole Bill</td>
-            <td>ANA Gura</td>
-            <td><a href="/update">Update</a></td>
-        </tr>
+        <% restaurants.forEach(item =>{ %>
+            <tr>
+                <td><%= item.id %></td>
+                <td><%= item.title %></td>
+                <td><%= item.restaurant %></td>
+                <td><a href="<%= `/update?id=${item.id}` %>">Update</a></td>
+            </tr>
+        <% }) %>
+        
     </tbody>
 </table>

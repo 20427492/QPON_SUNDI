@@ -1,109 +1,128 @@
-<section>
-    <div class="columns">
-        <!-- left side -->
-        <div class="column">
-            <!-- Title -->
-            <div class="field">
-                <label class="label">Title</label>
-                <div class="control">
-                    <input class="input" type="text">
-                </div>
-            </div>
-            <!-- Restaurant -->
-            <div class="field">
-                <label class="label">Restaurant</label>
-                <div class="control">
-                    <input class="input" type="text">
-                </div>
-            </div>
-            <!-- Region and Mall-->
-            <div class="columns">
-                <!-- Region -->
-                <div class="column">
-                    <div class="field">
-                        <label class="label">Region</label>
-                        <div class="control">
-                            <div class="selecte">
-                                <select>
-                                    <option>Kowloon</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Mall -->
-                <div class="column">
-                    <div class="field">
-                        <label class="label">Mall</label>
-                        <div class="control">
-                            <div class="selecte">
-                                <select>
-                                    <option>Elements</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Image -->
-            <div class="field">
-                <label class="label">Image</label>
-                <div class="control">
-                    <input class="input" type="text">
-                </div>
-            </div>
-            <!-- Delete -->
-            <div class="field">
-                <div class="control">
-                    <button class="button is-danger">Delete</button>
-                </div>
-            </div>
-        </div>
-        <!-- right side -->
-        <div class="column">
-            <!-- Coins and Quota -->
+<form action=" /restaurant/update/<%= restaurant.id %> " method="POST">
+    <section>
         <div class="columns">
-            <!-- Coins -->
+            <!-- left side -->
             <div class="column">
+                <!-- Title -->
                 <div class="field">
-                    <label class="label">Coins</label>
+                    <label class="label">Title</label>
                     <div class="control">
-                        <input class="input" type="text">
+                        <input class="input" type="text" name="title" value="<%= restaurant.title %>" required>
+                    </div>
+                </div>
+                <!-- Restaurant -->
+                <div class="field">
+                    <label class="label">Restaurant</label>
+                    <div class="control">
+                        <input class="input" type="text" name="restaurant" value="<%= restaurant.restaurant %>" required>
+                    </div>
+                </div>
+                <!-- Region and Mall-->
+                <div class="columns">
+                    <!-- Region -->
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Region</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select onchange="regionSelected(this.value)" name="region" id="selregion" required>
+                                        <option value="Kowloon">Kowloon</option>
+                                        <option value="HK Island">HK Island</option>
+                                        <option value="New Territories">New Territories</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mall -->
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Mall</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select onchange="mallSelected(this.value)" name="mall" id="selmall" required>
+                                        <option value="IFC Mall">IFC Mall</option>
+                                        <option value="Pacific Place">Pacific Place</option>
+                                        <option value="Times Square">Times Square</option>
+                                        <option value="Elements">Elements</option>
+                                        <option value="Harbour City">Harbour City</option>
+                                        <option value="Festival Walk">Festival Walk</option>
+                                        <option value="MegaBox">MegaBox</option>
+                                        <option value="APM">APM</option>
+                                        <option value="New Town Plaza">New Town Plaza</option>
+                                        <option value="Tsuen Wan Plaza">Tsuen Wan Plaza</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Image -->
+                <div class="field">
+                    <label class="label">Image</label>
+                    <div class="control">
+                        <input class="input" type="text" name="image" value="<%= restaurant.image %>" required>
+                    </div>
+                </div>
+                <!-- Delete -->
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-danger">Delete</button>
                     </div>
                 </div>
             </div>
-            <!-- Quota -->
+            <!-- right side -->
             <div class="column">
+                <!-- Coins and Quota -->
+                <div class="columns">
+                    <!-- Coins -->
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Coins</label>
+                            <div class="control">
+                                <input class="input" type="text" name="coins" value="<%= restaurant.coins %>" required>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quota -->
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Quota</label>
+                            <div class="control">
+                                <input class="input" type="text" name="quota" value="<%= restaurant.quota %>" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Deal Vaild Till -->
                 <div class="field">
-                    <label class="label">Quota</label>
+                    <label class="label">Deal Vaild Till</label>
                     <div class="control">
-                        <input class="input" type="text">
+                        <input class="input" type="text" name="dealValidTill" value="<%= restaurant.dealValidTill%>" required>
+                    </div>
+                </div>
+                <!-- Detail -->
+                <div class="field">
+                    <label class="label">Detail</label>
+                    <div class="control">
+                        <textarea class="textarea" name="detail" ><%= restaurant.detail %></textarea>
+                    </div>
+                </div>
+                <!-- Submit -->
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-link">Submit</button>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Deal Vaild Till -->
-        <div class="field">
-            <label class="label">Deal Vaild Till</label>
-            <div class="control">
-                <input class="input" type="text">
-            </div>
-        </div>
-        <!-- Detail -->
-        <div class="field">
-            <label class="label">Detail</label>
-            <div class="control">
-                <textarea class="textarea"></textarea>
-            </div>
-        </div>
-        <!-- Submit -->
-        <div class="field">
-           <div class="control">
-               <button class="button is-link">Submit</button>
-           </div>
-        </div>
-    </div>
 
         </div>
-        
-</section>
+
+    </section>
+</form>
+
+<script>
+    //2个选择器是被选择的状态
+    document.getElementById("<%= restaurant.region %>").selected = true;
+    document.getElementById("<%= restaurant.mall %>").selected = true;
+</script>
