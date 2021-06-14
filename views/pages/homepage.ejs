@@ -12,7 +12,7 @@
 
       <% restaurants[region].forEach(subItem=> { %>
         <!-- cards of each column -->
-        <a href="/detail">
+        <a href=" <%= `/detail?id=${subItem.id}` %> ">
           <div class="card" style="margin: 20px 0;">
             <!-- image -->
             <div class="card-image">
