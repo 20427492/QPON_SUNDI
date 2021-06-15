@@ -1,106 +1,160 @@
 <style>
-    .search-form-item{
-        margin-top: 20px;
+    .search-form-item {
+      margin-top: 20px;
     }
-</style>
-
-<section>
+  </style>
+  
+  <section>
     <div class="columns">
-        <!-- left side -->
-        <div class="column is-three-quarters">
-            <!-- result cards -->
-            <div class="columns">
-                <% [1, 2].forEach(item => { %>
-                    <div class="column">
-                        <% include ../layouts/card %>
+      <!-- left side -->
+      <div class="column is-three-quarters">
+        <div class="columns">
+          <% restaurants.forEach(item => { %>
+            <div class="column is-half">
+              <a href="<%= `/detail?id=${item.id}` %> ">
+                <div class="card" style="margin: 20px 0;">
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <img src="<%= item.image %>" alt="<%= item.restaurant %> ">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div>
+                      <p class="title is-4"><%= item.title %> </p>
+                      <p class="subtitle is-6"><%= item.detail %></p>
                     </div>
-                <% }) %>
+                
+                    <div class="content" style="margin-top: 20px;">
+                      Coins: <%= item.coins %> 
+                    </div>
+                  </div>
+                </div>
+              </a>
             </div>
-            
-            <!-- pagination -->
-            <nav class="pagination" role="navigation" aria-label="pagination">
-                <a class="pagination-previous">Previous</a>
-                <a class="pagination-next">Next Page</a>
-                <ul class="pagination-list">
-                    <li>
-                        <a class="pagination-link" aria-label="Go to page1">1</a>
-                    </li>
-                    <li>
-                        <span class="pagination-ellipsis">&hellip;</span>
-                    </li>
-                    <li>
-                        <a class="pagination-link" aria-label="Go to page45">45</a>
-                    </li>
-                    <li>
-                        <a class="pagination-link is-current" aria-label="Go to page46">46</a>
-                    </li>
-                    <li>
-                        <a class="pagination-link" aria-label="Go to page47">47</a>
-                    </li>
-                    <li>
-                        <span class="pagination-ellipsis">&hellip;</span>
-                    </li>
-                    <li>
-                        <a class="pagination-link" aria-label="Go to page48">48</a>
-                    </li>
-                </ul>
-            </nav>
-
+          <% }) %>
         </div>
         
-
-        <!-- right side -->
+      </div>
+      <!-- right side -->
+      <form action="/search" method="GET" id="search-form">
         <div class="column" style="margin-left: 12px;">
-            <!-- Region and Mall -->
-            <!-- Region -->
-            <div class="field search-form-item">
-                <label class="label">Region</label>
-                <div class="control">
-                    <div class="selecte">
-                        <select>
-                            <option>HK Island</option>
-                        </select>
-                    </div>
-                </div>
+          <div class="field search-form-item">
+            <label class="label">Region</label>
+            <div class="control">
+              <div class="select">
+                <select id="region" name="region">
+                  <% regions.forEach(item => { %>
+                    <option value="<%= item %>"><%= item %></option>
+                  <% }) %> 
+                </select>
+              </div>
             </div>
-            <!-- Mall -->
-            <div class="field search-form-item">
-                <label class="label">Mall</label>
-                <div class="control">
-                    <div class="selecte">
-                        <select>
-                            <option>Elements</option>
-                        </select>
-                    </div>
-                </div>
+          </div>
+          <div class="field search-form-item">
+            <label class="label">Min Coin</label>
+            <div class="control">
+              <input class="input" type="text" name="minCoin" id="minCoin">
             </div>
-            <!-- Min Coin -->
-            <div class="field search-form-item">
-                <label class="label">Min Coin</label>
-                <div class="control">
-                    <input class="input" type="text">
-                </div>
+          </div>
+          <div class="field search-form-item">
+            <label class="label">Max Coin</label>
+            <div class="control">
+              <input class="input" type="text" name="maxCoin" id="maxCoin">
             </div>
-            <!-- Max Coin -->
-            <div class="field search-form-item">
-                <label class="label">Max Coin</label>
-                <div class="control">
-                    <input class="input" type="text">
-                </div>
+          </div>
+          <div class="field search-form-item">
+            <label class="label">Deal Vaild Till</label>
+            <div class="control">
+              <input class="input" type="text" name="dealValidTill" id="dealValidTill">
             </div>
-            <!-- Deal Vaild Till -->
-            <div class="field search-form-item">
-                <label class="label">Deal Vaild Till</label>
-                <div class="control">
-                    <input class="input" type="text">
-                </div>
+          </div>
+          <div class="field search-form-item">
+            <div class="control">
+              <button class="button is-link" type="submit" id="search-btn">Search</button>
             </div>
-            <!-- Search -->
-            <div class="field search-form-item">
-                <div class="control">
-                    <button class="button is-link">Search</button>
-                </div>
-            </div>
+          </div>
         </div>
+      </form>
     </div>
-</section>
+    <nav class="pagination" role="navigation" aria-label="pagination">
+      <a class="pagination-previous" id="previous-btn">Previous</a>
+      <a class="pagination-next" id="next-btn">Next page</a>
+      <ul class="pagination-list" id="pagin-list">
+        <% for (let i = 0; i < Math.ceil(total / 2); i++) { %>
+          <li>
+            <a
+              class="<%= pageNo == i ? "pagination-link is-current": "pagination-link" %>"
+              aria-label="Goto page <%= i + 1 %>"
+              onclick="tooglePageNo(<%= i %>)"
+            ><%= i + 1 %></a>
+          </li>
+        <% } %>
+      </ul>
+    </nav>
+  </section>
+  
+  <script>
+    var qs = {
+      stringify(data) {
+        const arr = Object.keys(data).map(key => {
+          return `${key}=${data[key]}`;
+        });
+        return arr.join('&');
+      },
+      parse(str) {
+        const obj = {};
+        str.split('&').forEach(item => {
+          const arr = item.split('=');
+          obj[arr[0]] = arr[1];
+        });
+        return obj;
+      }
+    };
+    const form = document.getElementById('search-form');
+    if (!location.search) {
+      form.submit();
+    }
+    const [origin, query] = location.href.split('?');
+    const params = query ? qs.parse(query) : {};
+  
+    const list = document.getElementById('pagin-list');
+    const li = [...list.childNodes].filter(item => {
+      return item.nodeName === 'LI';
+    });
+    li.forEach(l => {
+      const pageNo = l.textContent.trim() - 1;
+      l.addEventListener('click', () => {
+        params.pageNo = pageNo;
+        location.href = origin + '?' + qs.stringify(params);
+      });
+    });
+    const previousBtn = document.getElementById('previous-btn');
+    const nextBtn = document.getElementById('next-btn');
+    // events
+    previousBtn.onclick = () => {
+      params.pageNo = Number(params.pageNo) ? params.pageNo - 1 : 0;
+      location.href = origin + '?' + qs.stringify(params);
+    };
+    nextBtn.onclick = () => {
+      params.pageNo = Number(params.pageNo) ? Number(params.pageNo) + 1 : 1;
+      location.href = origin + '?' + qs.stringify(params);
+    };
+    // control
+    if (params.pageNo == 0) {
+      previousBtn.setAttribute('disabled', true);
+      previousBtn.onclick = null;
+    }
+    if (params.pageNo == li.length - 1) {
+      nextBtn.setAttribute('disabled', true);
+      nextBtn.onclick = null;
+    }
+  
+    function tooglePageNo(i) {
+      let href = location.href;
+      href = href.replace(/&pageNo=[\d]/, '');
+      console.log(href);
+      // location.href += `&pageNo=${i}`;
+    }
+    
+  </script>
+  

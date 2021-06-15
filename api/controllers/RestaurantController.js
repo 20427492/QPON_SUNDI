@@ -99,6 +99,47 @@ module.exports = {
 
 
     //search
+    search: async function(req, res) {
+
+        const restaurants = await Restaurant.find();
+      
+        // the regions could be choosed
+        const regions = [];
+        let result = [];
+        restaurants.forEach(item => {
+          if (!regions.includes(item.region)) {
+            regions.push(item.region);
+          }
+        });
+        const pageNo = Number(req.param('pageNo')) || 0;
+        const region = req.param('region');
+        const minCoin = req.param('minCoin') || 0;
+        const maxCoin = req.param('maxCoin');
+        // const dealValidTill = req.param('dealValidTill');
+        if (!region) {
+          result = restaurants;
+        } else {
+          restaurants.forEach(item => {
+            if (item.region === region && item.coins >= minCoin) {
+              if (maxCoin) {
+                if (item.coins <= maxCoin) {
+                  result.push(item);
+                }
+              } else {
+                result.push(item);
+              }
+            }
+          });
+        }
+      
+        const total = result.length;
+        res.view('pages/search', {
+          pageNo,
+          regions,
+          total,
+          restaurants: result.slice(pageNo * 2, (pageNo + 1) * 2)
+        });
+      },
 
 
 
