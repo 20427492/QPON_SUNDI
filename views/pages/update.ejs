@@ -14,7 +14,8 @@
                 <div class="field">
                     <label class="label">Restaurant</label>
                     <div class="control">
-                        <input class="input" type="text" name="restaurant" value="<%= restaurant.restaurant %>" required>
+                        <input class="input" type="text" name="restaurant" value="<%= restaurant.restaurant %>"
+                            required>
                     </div>
                 </div>
                 <!-- Region and Mall-->
@@ -92,14 +93,15 @@
                 <div class="field">
                     <label class="label">Deal Vaild Till</label>
                     <div class="control">
-                        <input class="input" type="text" name="dealValidTill" value="<%= restaurant.dealValidTill%>" required>
+                        <input class="input" type="text" name="dealValidTill" value="<%= restaurant.dealValidTill%>"
+                            required>
                     </div>
                 </div>
                 <!-- Detail -->
                 <div class="field">
                     <label class="label">Detail</label>
                     <div class="control">
-                        <textarea class="textarea" name="detail" ><%= restaurant.detail %></textarea>
+                        <textarea class="textarea" name="detail"><%= restaurant.detail %></textarea>
                     </div>
                 </div>
                 <!-- Submit -->
@@ -127,21 +129,22 @@
 
 <script>
     async function deleteRestaurant(id) {
-        var mes = confirm ("confirm to delete?");
+        var mes = confirm("confirm to delete?");
 
         if (mes) {
-            var response = await fetch ("/restaurant/delete/"+id, {method: "DELETE"});
+            var response = await fetch("/restaurant/delete/" + id, { method: "DELETE" });
 
             if (response.ok) {
                 alert("Restaurant Deleted.");
                 //location.pathname = '/admin';
                 //return res.redirect('/');
 
-                location.assign = '/admin';
-            }else{
-                alert(response.status + ":" +response.statusText);
+                location.assign('/admin');
+
+            } else {
+                alert(response.status + ":" + response.statusText);
             }
-        }else{
+        } else {
             alert("cancelled");
         }
     };

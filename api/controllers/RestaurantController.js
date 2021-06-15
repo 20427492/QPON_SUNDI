@@ -74,9 +74,9 @@ module.exports = {
 
     // update
     update: async function (req, res) {
-        
+
         var updateRestaurant = await Restaurant.updateOne(req.params.id).set(req.body);
-        if(!updateRestaurant) return res.status(401).json("Updated failed");
+        if (!updateRestaurant) return res.status(401).json("Updated failed");
 
         /*一种可行的返回特定id的detail页面方法
         path = "/detail?id="+req.params.id;
@@ -91,25 +91,26 @@ module.exports = {
 
     // delete
     delete: async function (req, res) {
-        
+
         var deleteRestaurant = await Restaurant.destroyOne(req.params.id);
-        if(!deleteRestaurant) return res.status(401).json("Deleted failed");
+        if (!deleteRestaurant) return res.status(401).json("Deleted failed");
+        return res.ok();
 
     },
 
 
     //search
-    search: async function(req, res) {
+    search: async function (req, res) {
 
         const restaurants = await Restaurant.find();
-      
+
         // the regions could be choosed
         const regions = [];
         let result = [];
         restaurants.forEach(item => {
-          if (!regions.includes(item.region)) {
-            regions.push(item.region);
-          }
+            if (!regions.includes(item.region)) {
+                regions.push(item.region);
+            }
         });
         const pageNo = Number(req.param('pageNo')) || 0;
         const region = req.param('region');
@@ -117,29 +118,29 @@ module.exports = {
         const maxCoin = req.param('maxCoin');
         // const dealValidTill = req.param('dealValidTill');
         if (!region) {
-          result = restaurants;
+            result = restaurants;
         } else {
-          restaurants.forEach(item => {
-            if (item.region === region && item.coins >= minCoin) {
-              if (maxCoin) {
-                if (item.coins <= maxCoin) {
-                  result.push(item);
+            restaurants.forEach(item => {
+                if (item.region === region && item.coins >= minCoin) {
+                    if (maxCoin) {
+                        if (item.coins <= maxCoin) {
+                            result.push(item);
+                        }
+                    } else {
+                        result.push(item);
+                    }
                 }
-              } else {
-                result.push(item);
-              }
-            }
-          });
+            });
         }
-      
+
         const total = result.length;
         res.view('pages/search', {
-          pageNo,
-          regions,
-          total,
-          restaurants: result.slice(pageNo * 2, (pageNo + 1) * 2)
+            pageNo,
+            regions,
+            total,
+            restaurants: result.slice(pageNo * 2, (pageNo + 1) * 2)
         });
-      },
+    },
 
 
 
